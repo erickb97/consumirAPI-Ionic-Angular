@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>clientes Registrados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  Bienvenido. 
+
+  <button (click)="getAllUsers()" class="desing">
+    Obtener Usuarios
+  </button>
+
+    <ion-list *ngFor="let usr of usr">
+        <ion-item>
+            <ion-label>{{usr.id_usuario}} {{usr.nombre}} {{usr.apellido}} </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>
