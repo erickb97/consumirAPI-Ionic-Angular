@@ -32,7 +32,7 @@ export class Tab1Page {
   }
 
   private login(){
-    this.proveedorService.setlogin(this.todo.value).subscribe(erro =>{console.log(erro);},);
+    this.proveedorService.setlogin(this.todo.value).subscribe(erro =>{console.log(erro);});
   }
   
 }

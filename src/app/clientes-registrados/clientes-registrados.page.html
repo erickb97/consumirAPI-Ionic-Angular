@@ -1,19 +1,29 @@
-<ion-header>
+<ion-header no-border >
   <ion-toolbar>
-    <ion-title>clientes Registrados</ion-title>
+      <ion-buttons>
+          <ion-back-button text="atras" defaulHref="/"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Clientes Registrados</ion-title>
   </ion-toolbar>
+  <ion-searchbar animated (ionChange) = "Buscar($event)" ></ion-searchbar>
 </ion-header>
-
 <ion-content>
-  Bienvenido. 
-
-  <button (click)="getAllUsers()" class="desing">
-    Obtener Usuarios
-  </button>
-
-    <ion-list *ngFor="let usr of usr">
+    <ion-list *ngFor="let usr of usr | filtro: texto">
         <ion-item>
             <ion-label>{{usr.id_usuario}} {{usr.nombre}} {{usr.apellido}} </ion-label>
         </ion-item>
     </ion-list>
+      <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+          <ion-fab-button color="light">
+            <ion-icon name="arrow-dropleft-circle"> </ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="start">
+              <ion-fab-button [routerLink]="['/newcredito']" routerLinkActive="router-link-active"  color="light">
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </ion-fab-button>
+            <ion-fab-button [routerLink]="['/pagos']" routerLinkActive="router-link-active"  color="light">
+              <ion-icon name="card"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+        </ion-fab>
 </ion-content>

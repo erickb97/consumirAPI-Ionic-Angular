@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons>
+          <ion-back-button text="atras" defaulHref="/"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Solicitar Credito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    
+    <ion-card>
+    <ion-card-content>
+          <img class="user-avatar round" style="height: 200px; max-width: 500px;" src="/assets/imgcredit.svg" alt="" />
+          <form [formGroup]="todo3" (ngSubmit)="logForm()">
+              <ion-item>
+                <ion-label position="floating">Ingrese el No. de Usuario:</ion-label>
+                <ion-input type="number" maxlength="4" formControlName="idusuario"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Monto a prestar:</ion-label>
+                <ion-input type="number" placeholder="0000.00" formControlName="monto"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label position="floating">Deuda Real:</ion-label>
+                  <ion-input type="number" placeholder="0000.00" formControlName="mreal"></ion-input>
+                </ion-item>
+              <ion-item>
+                  <ion-label>Cantidad de Cuotas:</ion-label>
+                  <ion-select interface="popover" formControlName="cuotas" placeholder="Seleciona una opcion" required>
+                      <ion-select-option value="1">12 cuotas</ion-select-option>
+                      <ion-select-option value="2">24 cuotas</ion-select-option>
+                      <ion-select-option value="3">36 cuotas</ion-select-option>
+                  </ion-select>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label position="floating">Descripción:</ion-label>
+                  <ion-textarea formControlName="desc"></ion-textarea>
+              </ion-item>
+
+              <ion-button type="submit" href="#" [disabled]="todo3.invalid" expand="block" fill="outline">Generar</ion-button>
+            </form>
+      </ion-card-content>
+    </ion-card>
+
+
+
+</ion-content>

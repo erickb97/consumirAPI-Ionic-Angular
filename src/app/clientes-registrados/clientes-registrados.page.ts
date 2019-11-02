@@ -11,8 +11,10 @@ export class ClientesRegistradosPage implements OnInit {
     private proveedorService: ProveedorService
   ) { }
 
-  usr
+  usr;
+  texto = '';
   ngOnInit() {
+    this.getAllUsers();
   }
   public getAllUsers(){
     this.proveedorService.getAllUsers().subscribe(todos =>{this.usr = todos;}, error =>{console.log(error);});
@@ -20,5 +22,10 @@ export class ClientesRegistradosPage implements OnInit {
   }
   public getAllUserId(id: string){
     this.proveedorService.getAllUsersId(id).subscribe(user =>{console.log(user);});
+  }
+
+  Buscar(event){
+    //console.log(event);
+    this.texto = event.detail.value;
   }
 }

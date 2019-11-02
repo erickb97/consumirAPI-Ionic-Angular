@@ -16,12 +16,13 @@ export class Tab2Page {
   constructor(private proveedorService: ProveedorService, 
     private FormBuilder: FormBuilder, 
     private router:Router,
-    public alertController: AlertController) {
+    public alertController: AlertController
+    ) {
     this.todo2 = this.FormBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       edad: ['', Validators.required],
-      dpi: ['', Validators.maxLength(13), Validators.minLength(13)],
+      dpi: ['', Validators.minLength(13)],
       correo: ['', Validators.email],
       marital: ['', Validators.required],
       genero: ['', Validators.required],
@@ -33,13 +34,17 @@ export class Tab2Page {
     let user = this.todo2.value;
     let newDataBinaryGender=0;
     let newDataBinaryMarital=0;
-    if(user.genero == "Masculino" || user.marital == "Casado"){
+    if(user.genero == "Masculino" ){
       newDataBinaryGender =1
-      newDataBinaryMarital =1
     }else{
       newDataBinaryGender =2
+    }
+    if (user.marital == "Casado") {
+      newDataBinaryMarital =1
+    } else {
       newDataBinaryMarital =2
     }
+
     this.sendinfo(user.nombre, user.apellido, user.edad, user.dpi, user.correo, user.contrasena, 
       newDataBinaryGender, newDataBinaryMarital);
       this.todo2.reset;
@@ -65,8 +70,9 @@ export class Tab2Page {
       "id_genero": genero
     };
 
-    this.proveedorService.setnewUser(user).subscribe(erro =>{console.log(erro);},);
+    this.proveedorService.setnewUser(user).subscribe(erro =>{console.log(erro);});
   }
+  
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'New User',
