@@ -28,4 +28,9 @@ export class ClientesRegistradosPage implements OnInit {
     //console.log(event);
     this.texto = event.detail.value;
   }
+
+  deleteClient(id: string){
+    this.proveedorService.delete(id).subscribe(user =>{console.log(user);});
+    console.log(id);
+  }
 }

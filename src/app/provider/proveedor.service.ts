@@ -10,7 +10,7 @@ export class ProveedorService {
 
   constructor(private http: HttpClient) { }
 
-  dominio = 'https://76deb04e.ngrok.io/';
+  dominio = 'https://ca073775.ngrok.io/';
 
   getAllUsers(){
     const path = this.dominio +'api/accountmanagement/usuarios';
@@ -36,5 +36,11 @@ export class ProveedorService {
   setCredit(credito:{}){
     const path = this.dominio+'api/loanmanagement/generate';
     return this.http.post(path,credito);
+  }
+  
+
+  delete(id: string){
+    const path = this.dominio+'api/accountmanagement/borrar/'+id;
+    return this.http.delete(path);
   }
 }

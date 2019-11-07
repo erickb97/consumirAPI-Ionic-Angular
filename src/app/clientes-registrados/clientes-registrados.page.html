@@ -10,9 +10,19 @@
 <ion-content>
     <ion-list *ngFor="let usr of usr | filtro: texto">
         <ion-item>
-            <ion-label>{{usr.id_usuario}} {{usr.nombre}} {{usr.apellido}} </ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                    <ion-label>
+                      {{usr.id_usuario}} {{usr.nombre}} {{usr.apellido}}  
+                    </ion-label>
+                </ion-col>
+                    <ion-button  (click)="deleteClient(usr.id_usuario)" shape="round" color="danger" fill="outline">Eliminar</ion-button> 
+              </ion-row>
+            </ion-grid> 
         </ion-item>
     </ion-list>
+
       <ion-fab horizontal="end" vertical="bottom" slot="fixed">
           <ion-fab-button color="light">
             <ion-icon name="arrow-dropleft-circle"> </ion-icon>
